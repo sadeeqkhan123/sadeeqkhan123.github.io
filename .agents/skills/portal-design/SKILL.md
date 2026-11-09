@@ -5,7 +5,7 @@ description: Concrete UI specification and acceptance criteria for the tanzyyy-d
 
 # Portal UI design specification
 
-This file specifies **what to build and how to check it**. Agent behavior, Git commits, deployment safety, and build commands belong in the root `AGENTS.md`, not here.
+This file specifies **what to build and how to check it**. Repository-wide execution rules belong in the root `AGENTS.md`, not here.
 
 ## 1. Product and content hierarchy
 
@@ -103,9 +103,8 @@ For a UI change, check **at minimum**:
 - Touch: main action and navigation links remain usable without hover.
 - Content: no fabricated screenshots or live links; JP/EN content hierarchy matches.
 - Density: no redundant hero, duplicate listing, or large empty section without purpose.
-- Build: run `npm run build` when possible, as required by `AGENTS.md`.
 
-**Do not claim visual verification without screenshots/browser inspection.** If a viewport, device, or build cannot be tested, report that limitation rather than declaring success.
+**Do not claim visual verification without screenshots/browser inspection.** If a viewport or device cannot be inspected, report that limitation rather than declaring visual success.
 
 ## 7. Where to edit
 
