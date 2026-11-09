@@ -1,0 +1,6 @@
+---
+import Base from '../../layouts/Base.astro';
+import ProjectList from '../../components/ProjectList.astro';
+import {copy} from '../../data/content';
+---
+<Base lang="ja" title="作品一覧"><div class="wrap page"><h1>作品一覧</h1><p class="lead">{copy.ja.intro}</p><ProjectList lang="ja"/></div></Base>
