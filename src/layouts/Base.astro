@@ -1,0 +1,32 @@
+---
+import '../styles/global.css';
+import {copy, type Lang} from '../data/content';
+interface Props {lang:Lang; title?:string; description?:string}
+const {lang,title,description}=Astro.props;
+const t=copy[lang];
+const path=Astro.url.pathname;
+const alternate=lang==='ja'?'/en'+(path==='/'?'/':path):(path.replace(/^\/en(?=\/)/,'')||'/');
+const origin='https://tanzyyy-dev.github.io';
+const canonical=new URL(path,origin).href;
+const otherUrl=new URL(alternate,origin).href;
+const home=lang==='ja'?'/':'/en/';
+const prefix=lang==='ja'?'':'/en';
+---
+<!doctype html>
+<html lang={lang}>
+<head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>{title?title+' | tanzyyy-dev':'tanzyyy-dev | Projects'}</title>
+<meta name="description" content={description??t.intro}/>
+<link rel="canonical" href={canonical}/>
+<link rel="alternate" hreflang="ja" href={lang==='ja'?canonical:otherUrl}/>
+<link rel="alternate" hreflang="en" href={lang==='en'?canonical:otherUrl}/>
+<meta property="og:type" content="website"/><meta property="og:title" content={title??'tanzyyy-dev'}/>
+<meta property="og:description" content={description??t.intro}/><meta property="og:url" content={canonical}/>
+</head>
+<body>
+<a class="skip" href="#main">{lang==='ja'?'本文へ移動':'Skip to content'}</a>
+<header><div class="wrap header-inner"><a class="brand" href={home}>tanzyyy-dev</a><nav aria-label={lang==='ja'?'メインナビゲーション':'Main navigation'}><a href={prefix+'/projects/'}>{t.projects}</a><a href={prefix+'/about/'}>{t.about}</a><a href={alternate} lang={lang==='ja'?'en':'ja'}>{lang==='ja'?'EN':'日本語'}</a></nav></div></header>
+<main id="main"><slot/></main>
+<footer><div class="wrap foot"><span>© {new Date().getFullYear()} tanzyyy-dev</span><a href="https://github.com/tanzyyy-dev">GitHub ↗</a></div></footer>
+</body></html>
