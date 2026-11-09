@@ -27,6 +27,14 @@ Build a distinctive, useful **software and project directory for ordinary visito
 - Avoid recognizable generic AI-site tropes: arbitrary mint/green palettes, white-on-pastel rounded-card grids, excessive pill badges, ornamental gradients, empty hero slogans, and repetitive cards without a content purpose.
 - Do not assume a color palette, typography, or visual motif has been approved. Propose choices based on the site's content and obtain agreement before large visual changes.
 
+## Responsive layout principles
+
+- No oversized generic hero, filler slogan, or repeated introduction. The home page should immediately show the actual project.
+- On desktop, use a compact two-column project feature: visual on the left, title, summary, and primary action on the right.
+- On mobile, use one column ordered visual → title → summary → primary action; preserve natural vertical scrolling rather than forcing viewport height.
+- Keep page spacing proportional to content, and avoid decorative empty sections. Do not show filters when there is only one project.
+- Prefer a simple visible navigation over a hidden hamburger for just a few destinations. Touch targets should be comfortable (around 44px).
+
 ## Workflow for screen changes
 
 1. **Inspect before designing.** Read the relevant Astro pages, shared components, `src/styles/global.css`, and content model. Check current screenshots or a local preview when possible. State what is observed versus inferred.

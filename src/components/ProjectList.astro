@@ -2,24 +2,21 @@
 import {copy,project,type Lang} from '../data/content';
 interface Props {lang:Lang}
 const {lang}=Astro.props;
-const t=copy[lang];const prefix=lang==='ja'?'':'/en';
-const keys=['all','games','services','contents','skills'];
+const t=copy[lang];
+const prefix=lang==='ja'?'':'/en';
+const detail=prefix+'/projects/hackhackhack/';
 ---
-<div class="filters" role="group" aria-label="Categories">
-{keys.map((key,i)=><button type="button" class={i===0?'active':''} data-filter={key} aria-pressed={i===0?'true':'false'}>{t.categories[i]}</button>)}
-</div>
-<div class="project-row" data-category="games">
-<a class="art" href={prefix+'/projects/hackhackhack/'} aria-label={project.title+' — '+t.detail}><span>GAME / 001</span><strong>THE<br/>HOLLYWOOD<br/>HACKER</strong><small>RHYTHM × KEYBOARD</small></a>
-<div><p class="eyebrow">{t.categories[1]} · Browser</p><h2><a href={prefix+'/projects/hackhackhack/'}>{project.title}</a></h2><p>{project.summary[lang]}</p><a href={prefix+'/projects/hackhackhack/'}>{t.detail} →</a></div>
-</div>
-<p id="empty" hidden>{t.empty}</p>
-<script>
-const buttons=document.querySelectorAll<HTMLButtonElement>('[data-filter]');
-const item=document.querySelector<HTMLElement>('[data-category]');
-const empty=document.querySelector<HTMLElement>('#empty');
-buttons.forEach(button=>button.addEventListener('click',()=>{
-  const show=button.dataset.filter==='all'||button.dataset.filter==='games';
-  if(item)item.hidden=!show;if(empty)empty.hidden=show;
-  buttons.forEach(b=>{b.classList.toggle('active',b===button);b.setAttribute('aria-pressed',String(b===button));});
-}));
-</script>
+<section class="project-row" aria-labelledby="featured-project-title">
+  <a class="art" href={detail} aria-label={project.title+' — '+t.detail}>
+    <span class="art-label">GAME / 001</span>
+    <strong>THE<br/>HOLLYWOOD<br/>HACKER</strong>
+    <small>RHYTHM × KEYBOARD</small>
+  </a>
+  <div class="project-info">
+    <p class="project-meta">{t.categories[1]} / Browser</p>
+    <h2 id="featured-project-title"><a href={detail}>{project.title}</a></h2>
+    <p class="project-summary">{project.summary[lang]}</p>
+    <a class="primary-link" href={detail}>{t.detail}<span aria-hidden="true"> →</span></a>
+    <a class="source-link" href={project.repositoryUrl} target="_blank" rel="noopener noreferrer">{t.source}<span aria-hidden="true"> ↗</span></a>
+  </div>
+</section>
