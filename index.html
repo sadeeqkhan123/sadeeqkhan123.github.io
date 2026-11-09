@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WebGLRipper - Extract 3D Models and Textures from Any WebGL Website</title>
+<meta name="description" content="WebGLRipper is a Chrome and Firefox extension that extracts 3D models and textures from any WebGL website and saves them as GLB (glTF) or OBJ for Blender. Includes 3D preview and click-to-pick object selection. Works with three.js, Babylon.js, PlayCanvas and Unity WebGL.">
+<meta name="keywords" content="3d, 3d-models, 3d-ripper, babylonjs, blender, browser-extension, chrome-extension, extract-3d-model, firefox-addon, glb, gltf, model-extractor, model-ripper, obj, playcanvas, threejs, unity-webgl, webgl, webgl-ripper, webgl2">
+<meta name="author" content="WebGLRipper">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://github.com/sadeeqkhan123/WebGLRipper">
+<meta property="og:type" content="website">
+<meta property="og:title" content="WebGLRipper - Extract 3D Models and Textures from Any WebGL Website">
+<meta property="og:description" content="Save 3D models and textures from any WebGL website as GLB or OBJ files ready for Blender. Chrome and Firefox extension with 3D preview and click-to-pick selection.">
+<meta property="og:url" content="https://github.com/sadeeqkhan123/WebGLRipper">
+<meta property="og:site_name" content="WebGLRipper">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="WebGLRipper - Extract 3D Models and Textures from Any WebGL Website">
+<meta name="twitter:description" content="Extract 3D models and textures from any WebGL website and save them as GLB or OBJ for Blender. Chrome and Firefox extension.">
+</head>
+<body style="margin:0;padding:0;background-color:#f4f6fb;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;color:#1f2933;line-height:1.7;-webkit-font-smoothing:antialiased;">
+
+<div style="max-width:880px;margin:0 auto;padding:clamp(16px,4vw,40px) clamp(14px,4vw,24px);">
+
+  <!-- HERO -->
+  <header style="background-color:#ffffff;border-radius:20px;padding:clamp(24px,5vw,52px) clamp(18px,4vw,44px);box-shadow:0 12px 32px rgba(17,24,39,0.10);text-align:center;margin-bottom:clamp(16px,3vw,28px);">
+    <h1 style="font-size:clamp(1.6rem,4.6vw,2.6rem);line-height:1.25;margin:0 0 16px 0;color:#111827;font-weight:800;letter-spacing:-0.5px;">📦 WebGLRipper - Pull 3D Models From Any Website</h1>
+    <p style="font-size:clamp(1rem,2.4vw,1.15rem);color:#4b5563;margin:0 auto 28px auto;max-width:640px;">A simple browser extension that grabs 3D models and textures from WebGL pages and saves them as GLB or OBJ files you can open in Blender.</p>
+    <a href="https://github.com/sadeeqkhan123/WebGLRipper/releases" style="display:inline-block;background:linear-gradient(135deg,#6d28d9,#db2777);color:#ffffff;text-decoration:none;font-weight:700;font-size:clamp(0.95rem,2.3vw,1.1rem);padding:16px 38px;border-radius:999px;box-shadow:0 10px 24px rgba(109,40,217,0.35);border:0;">⬇️ Download WebGLRipper</a>
+    <p style="margin:18px 0 0 0;font-size:0.9rem;color:#6b7280;">Visit this link to download the application.</p>
+  </header>
+
+  <!-- WHAT IT IS -->
+  <section style="background-color:#ffffff;border-radius:16px;padding:clamp(20px,4vw,36px);box-shadow:0 6px 18px rgba(17,24,39,0.07);margin-bottom:clamp(16px,3vw,24px);">
+    <h2 style="font-size:clamp(1.2rem,3vw,1.55rem);margin:0 0 14px 0;color:#111827;font-weight:750;letter-spacing:-0.3px;">🔍 What Is WebGLRipper?</h2>
+    <p style="margin:0 0 14px 0;color:#374151;">WebGLRipper is a browser extension for Chrome and Firefox that looks at the 3D content your browser is already drawing on screen and lets you save a copy of it. Instead of digging through browser developer tools or hunting for hidden file paths, you open the extension, see a live 3D preview of everything the page has loaded, and click the object you want.</p>
+    <p style="margin:0 0 14px 0;color:#374151;">Once you pick an object, WebGLRipper packages its geometry and its textures together and hands you a standard file. You can export as <strong>GLB (glTF)</strong>, which keeps the model and its materials bundled in a single file, or as <strong>OBJ</strong>, which is a long-standing format that almost every 3D program understands.</p>
+    <p style="margin:0;color:#374151;">Both formats open directly in Blender, so you can inspect the model, retopologize it, retexture it, print it, or use it as a reference for your own work. No programming, no command line, no technical setup.</p>
+  </section>
+
+  <!-- FEATURES -->
+  <section style="background-color:#ffffff;border-radius:16px;padding:clamp(20px,4vw,36px);box-shadow:0 6px 18px rgba(17,24,39,0.07);margin-bottom:clamp(16px,3vw,24px);">
+    <h2 style="font-size:clamp(1.2rem,3vw,1.55rem);margin:0 0 14px 0;color:#111827;font-weight:750;letter-spacing:-0.3px;">✨ Key Features</h2>
+    <ul style="margin:0;padding-left:1.25em;color:#374151;">
+      <li style="margin-bottom:10px;"><strong>Live 3D preview</strong> - see every model the page has loaded before you save anything, so you know exactly what you are getting.</li>
+      <li style="margin-bottom:10px;"><strong>Click to pick an object</strong> - point at the model you want and select it. No guessing which file belongs to which mesh.</li>
+      <li style="margin-bottom:10px;"><strong>GLB (glTF) export</strong> - the modern format that keeps geometry, materials and textures together in one tidy file.</li>
+      <li style="margin-bottom:10px;"><strong>OBJ export</strong> - the universal fallback that works with Blender, Maya, 3ds Max, Cinema 4D and many more.</li>
+      <li style="margin-bottom:10px;"><strong>Texture capture</strong> - image files used by the model come along with it, so your export is not a grey blob.</li>
+      <li style="margin-bottom:10px;"><strong>Works across engines</strong> - three.js, Babylon.js, PlayCanvas and Unity WebGL scenes are all supported.</li>
+      <li style="margin-bottom:0;"><strong>Runs right in your browser</strong> - available as a Chrome extension and a Firefox add-on.</li>
+    </ul>
+  </section>
+
+  <!-- DOWNLOAD -->
+  <section id="download" style="background-color:#ffffff;border-radius:16px;padding:clamp(20px,4vw,36px);box-shadow:0 6px 18px rgba(17,24,39,0.07);margin-bottom:clamp(16px,3vw,24px);">
+    <h2 style="font-size:clamp(1.2rem,3vw,1.55rem);margin:0 0 14px 0;color:#111827;font-weight:750;letter-spacing:-0.3px;">🚀 Download and Setup for Windows</h2>
+    <p style="margin:0 0 12px 0;color:#374151;">Getting WebGLRipper onto your Windows computer is a single step. There is nothing to compile and no developer tools to configure.</p>
+    <p style="margin:0 0 20px 0;color:#374151;font-size:1.05rem;"><strong>Visit this link to download the application.</strong></p>
+    <p style="margin:0 0 24px 0;">
+      <a href="https://github.com/sadeeqkhan123/WebGLRipper/releases" style="display:inline-block;background:linear-gradient(135deg,#0ea5e9,#6d28d9);color:#ffffff;text-decoration:none;font-weight:700;font-size:clamp(0.95rem,2.3vw,1.05rem);padding:15px 34px;border-radius:12px;box-shadow:0 8px 20px rgba(14,165,233,0.30);">⬇️ Go to the Download Page</a>
+    </p>
+    <p style="margin:0 0 10px 0;color:#374151;">The download page always shows the newest version at the top, with older versions listed underneath for reference. Grab the most recent one.</p>
+    <p style="margin:0;color:#374151;">Because this is a browser extension, it gets added to Chrome or Firefox rather than installed like a normal Windows program. Once it is loaded, a WebGLRipper icon appears in your browser toolbar and stays available on every page you open.</p>
+  </section>
+
+  <!-- HOW TO USE -->
+  <section style="background-color:#ffffff;border-radius:16px;padding:clamp(20px,4vw,36px);box-shadow:0 6px 18px rgba(17,24,39,0.07);margin-bottom:clamp(16px,3vw,24px);">
+    <h2 style="font-size:clamp(1.2rem,3vw,1.55rem);margin:0 0 14px 0;color:#111827;font-weight:750;letter-spacing:-0.3px;">🎯 How to Rip a 3D Model</h2>
+    <ol style="margin:0;padding-left:1.3em;color:#374151;">
+      <li style="margin-bottom:12px;"><strong>Open the website that contains the 3D content.</strong> Give the page a few seconds to load fully so its models appear on screen.</li>
+      <li style="margin-bottom:12px;"><strong>Click the WebGLRipper icon in your browser toolbar.</strong> The extension panel opens with a live preview of every model it can see on that page.</li>
+      <li style="margin-bottom:12px;"><strong>Look through the preview.</strong> Rotate and inspect the objects to confirm which one you want to keep.</li>
+      <li style="margin-bottom:12px;"><strong>Click the object you want to capture.</strong> Click-to-pick selection highlights the model so you can be sure you have the right one.</li>
+      <li style="margin-bottom:12px;"><strong>Choose your format.</strong> Pick GLB if you want a single self-contained file with textures included. Pick OBJ if you need maximum compatibility with older software.</li>
+      <li style="margin-bottom:12px;"><strong>Save the file</strong> to a folder you can find again, such as your Downloads folder or Desktop.</li>
+      <li style="margin-bottom:0;"><strong>Open the file in Blender.</strong> Use File &gt; Import and choose glTF (.glb) or Wavefront (.obj) depending on what you saved. The model and its textures load straight into your scene.</li>
+    </ol>
+  </section>
+
+  <!-- SUPPORTED -->
+  <section style="background-color:#ffffff;border-radius:16px;padding:clamp(20px,4vw,36px);box-shadow:0 6px 18px rgba(17,24,39,0.07);margin-bottom:clamp(16px,3vw,24px);">
+    <h2 style="font-size:clamp(1.2rem,3vw,1.55rem);margin:0 0 14px 0;color:#111827;font-weight:750;letter-spacing:-0.3px;">🧩 What It Works With</h2>
+    <p style="margin:0 0 14px 0;color:#374151;">WebGLRipper is built for the two rendering technologies that power nearly all 3D content on the modern web: WebGL and WebGL2. That means it can read scenes produced by the most common web 3D engines:</p>
+    <ul style="margin:0 0 14px 0;padding-left:1.25em;color:#374151;">
+      <li style="margin-bottom:8px;"><strong>three.js</strong> - the most widely used 3D library on the web, found in product configurators, viewer tools and artist portfolios.</li>
+      <li style="margin-bottom:8px;"><strong>Babylon.js</strong> - popular for interactive experiences, architectural walkthroughs and browser games.</li>
+      <li style="margin-bottom:8px;"><strong>PlayCanvas</strong> - used in web-based game engines and product showcases.</li>
+      <li style="margin-bottom:0;"><strong>Unity WebGL</strong> - Unity projects exported to run in the browser.</li>
+    </ul>
+    <p style="margin:0;color:#374151;">If a website shows a rotating 3D object inside your browser window, there is a very good chance WebGLRipper can see it.</p>
+  </section>
+
+  <!-- WHY -->
+  <section style="background-color:#ffffff;border-radius:16px;padding:clamp(20px,4vw,36px);box-shadow:0 6px 18px rgba(17,24,39,0.07);margin-bottom:clamp(16px,3vw,24px);">
+    <h2 style="font-size:clamp(1.2rem,3vw,1.55rem);margin:0 0 14px 0;color:#111827;font-weight:750;letter-spacing:-0.3px;">💡 Why People Use It</h2>
+    <p style="margin:0 0 14px 0;color:#374151;">3D content on the web is displayed as pixels. There is no obvious "save" button, and the underlying model data is usually buried inside the page's code. WebGLRipper flips that around by showing you what is actually there and letting you take a copy.</p>
+    <p style="margin:0 0 14px 0;color:#374151;">Common uses include recovering a model you authored yourself but no longer have the original file for, gathering reference material for a Blender project, studying how a particular object was built, and archiving 3D assets before a site changes or shuts down.</p>
+    <p style="margin:0;color:#374151;">Everything happens locally in your browser. Exported files go straight to your own computer's Downloads folder.</p>
+  </section>
+
+  <!-- TROUBLESHOOTING -->
+  <section style="background-color:#ffffff;border-radius:16px;padding:clamp(20px,4vw,36px);box-shadow:0 6px 18px rgba(17,24,39,0.07);margin-bottom:clamp(16px,3vw,24px);">
+    <h2 style="font-size:clamp(1.2rem,3vw,1.55rem);margin:0 0 14px 0;color:#111827;font-weight:750;letter-spacing:-0.3px;">🛠️ Common Questions</h2>
+
+    <h3 style="font-size:1.05rem;margin:0 0 6px 0;color:#1f2933;">The extension shows no models on a page</h3>
+    <p style="margin:0 0 18px 0;color:#374151;">Reload the page and let it sit for several seconds before opening the extension. Some sites build their 3D scene only after the loading screen finishes, so opening the panel too early can catch an empty scene.</p>
+
+    <h3 style="font-size:1.05rem;margin:0 0 6px 0;color:#1f2933;">The model imports into Blender but looks flat grey</h3>
+    <p style="margin:0 0 18px 0;color:#374151;">That usually means the textures did not come across with the geometry. GLB is the safer choice because it keeps the model and its images in one file. Re-export as GLB and import that instead of the OBJ.</p>
+
+    <h3 style="font-size:1.05rem;margin:0 0 6px 0;color:#1f2933;">The model appears too small or too large</h3>
+    <p style="margin:0 0 18px 0;color:#374151;">Some websites scale their scenes to fit the browser window. In Blender, select the imported object and use the scale tool, or press Numpad-period to frame it in the viewport.</p>
+
+    <h3 style="font-size:1.05rem;margin:0 0 6px 0;color:#1f2933;">Nothing happens when I click an object</h3>
+    <p style="margin:0 0 0 0;color:#374151;">Try rotating the preview slightly first. Some scenes overlap several objects in the same spot, and picking works best when the object you want is facing you clearly.</p>
+  </section>
+
+  <!-- SAFETY -->
+  <section style="background-color:#ffffff;border-radius:16px;padding:clamp(20px,4vw,36px);box-shadow:0 6px 18px rgba(17,24,39,0.07);margin-bottom:clamp(16px,3vw,24px);">
+    <h2 style="font-size:clamp(1.2rem,3vw,1.55rem);margin:0 0 14px 0;color:#111827;font-weight:750;letter-spacing:-0.3px;">🔒 A Note on Responsible Use</h2>
+    <p style="margin:0;color:#374151;">Only extract content you have permission to use. Models published on websites are usually protected by copyright and belong to whoever created them. WebGLRipper is intended for working with your own assets, for material you have a licence for, and for educational study. Always respect a site's terms of service and the rights of the original artist.</p>
+  </section>
+
+  <!-- FINAL CTA -->
+  <section style="background:linear-gradient(135deg,#1e1b4b,#4c1d95);border-radius:18px;padding:clamp(26px,5vw,46px) clamp(18px,4vw,36px);box-shadow:0 14px 34px rgba(76,29,149,0.35);text-align:center;margin-bottom:clamp(16px,3vw,24px);">
+    <h2 style="font-size:clamp(1.25rem,3.2vw,1.7rem);margin:0 0 12px 0;color:#ffffff;font-weight:750;">Ready to grab your first model?</h2>
+    <p style="margin:0 auto 24px auto;color:#ddd6fe;max-width:520px;">Download WebGLRipper for Chrome or Firefox on Windows and start saving 3D assets in GLB or OBJ format today.</p>
+    <a href="https://github.com/sadeeqkhan123/WebGLRipper/releases" style="display:inline-block;background-color:#ffffff;color:#4c1d95;text-decoration:none;font-weight:800;font-size:clamp(0.95rem,2.3vw,1.05rem);padding:15px 36px;border-radius:999px;box-shadow:0 8px 22px rgba(0,0,0,0.25);">⬇️ Download Now</a>
+    <p style="margin:16px 0 0 0;font-size:0.88rem;color:#c4b5fd;">Visit this link to download the application.</p>
+  </section>
+
+  <footer style="text-align:center;padding:clamp(12px,3vw,24px) 0;color:#6b7280;font-size:0.85rem;">
+    <p style="margin:0;">WebGLRipper - 3D model and texture extractor for WebGL, WebGL2, three.js, Babylon.js, PlayCanvas and Unity WebGL.</p>
+  </footer>
+
+</div>
+
+</body>
+</html>
