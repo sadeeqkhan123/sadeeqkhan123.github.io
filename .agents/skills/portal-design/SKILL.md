@@ -1,65 +1,118 @@
 ---
 name: portal-design
-description: Design and review the tanzyyy-dev Astro project portal UI. Read before modifying layouts, components, styles, navigation, responsive presentation, or other user-facing screens.
+description: Concrete UI specification and acceptance criteria for the tanzyyy-dev Astro project catalog. Use for changes to page layout, components, navigation, visual styling, and responsive behavior.
 ---
 
-# Portal design skill
+# Portal UI design specification
 
-## Purpose
+This file specifies **what to build and how to check it**. Agent behavior, Git commits, deployment safety, and build commands belong in the root `AGENTS.md`, not here.
 
-Build a distinctive, useful **software and project directory for ordinary visitors**, not a generic developer portfolio or an experimental design showcase. Help visitors quickly understand what each project does, see what it looks like, and find its detail page, demo (when available), or source.
+## 1. Product and content hierarchy
 
-## Product context
+**Product type:** a small software/project catalog for visitors who may not know GitHub. It is **not** a personal-brand landing page.
 
-- Site: `tanzyyy-dev.github.io`; Astro + TypeScript, static GitHub Pages.
-- Japanese is the default (`/`); English lives under `/en/`.
-- Categories: Games, Services, Contents, Skills.
-- Initially there is only one project. Do not fabricate volume, popularity, ratings, search demand, or rankings.
-- Project descriptions and links are manually maintained; unavailable demo links must not appear functional.
-- The pixel-art schnauzer is an identity asset, **not a mandate to use mint green as the site's palette**.
+The first screen should answer, in this order:
+1. What projects are available?
+2. What does the featured project do?
+3. Where can I see its details or use it?
 
-## Design direction
+For each project, prioritize: **visual → project title → one-sentence description → primary action**. Category/platform and repository link are secondary. A source-code link is not a substitute for a demo; if no demo exists, show a truthful availability message only where relevant.
 
-- **Information architecture:** Take inspiration from familiar software directories such as 窓の杜: clear titles, categories, summaries, concrete actions, and predictable navigation. This is a structural reference, not an instruction to copy its visual styling.
-- **Project presentation:** Learn from Playdate's game catalog in giving individual works a recognizable visual identity and room for genuine screenshots or artwork, without imitating its layout.
-- Make the project itself the focal point. Use authentic imagery when available; otherwise choose a clearly intentional placeholder and do not misrepresent it as a screenshot.
-- Favor legible hierarchy, precise spacing, useful metadata, and clear link affordances over decorative effects.
-- Avoid recognizable generic AI-site tropes: arbitrary mint/green palettes, white-on-pastel rounded-card grids, excessive pill badges, ornamental gradients, empty hero slogans, and repetitive cards without a content purpose.
-- Do not assume a color palette, typography, or visual motif has been approved. Propose choices based on the site's content and obtain agreement before large visual changes.
+Current catalog has **one project**. Do not render search, filters, sorting, pagination, ratings, counts-as-social-proof, a separate featured section duplicating the list, or an empty promotional hero. Introduce discovery controls only when content volume makes them useful.
 
-## Responsive layout principles
+Use the information hierarchy of a conventional software directory (e.g. 窓の杜), and give genuine project visuals prominence (as in game catalogs such as Playdate). **Do not copy either site's branding or layout.** The schnauzer is a brand asset, not a site-wide color instruction.
 
-- No oversized generic hero, filler slogan, or repeated introduction. The home page should immediately show the actual project.
-- On desktop, use a compact two-column project feature: visual on the left, title, summary, and primary action on the right.
-- On mobile, use one column ordered visual → title → summary → primary action; preserve natural vertical scrolling rather than forcing viewport height.
-- Keep page spacing proportional to content, and avoid decorative empty sections. Do not show filters when there is only one project.
-- Prefer a simple visible navigation over a hidden hamburger for just a few destinations. Touch targets should be comfortable (around 44px).
+## 2. Layout contract
 
-## Workflow for screen changes
+These are the **current implementation baseline**, not a claim that the visual identity is finally approved. When changing them, explain the user-facing benefit and check both locales.
 
-1. **Inspect before designing.** Read the relevant Astro pages, shared components, `src/styles/global.css`, and content model. Check current screenshots or a local preview when possible. State what is observed versus inferred.
-2. **Identify the visitor task and problem.** Explain what is confusing or visually weak and why a proposed change improves discovery, comprehension, or action.
-3. **For substantial redesigns, present distinct options first.** Compare 2–3 concrete directions with trade-offs and wait for selection before implementing. Do not silently choose a new visual system.
-4. **Implement the selected direction** with reusable components and minimal unnecessary complexity. Preserve existing routes and content unless changes are approved.
-5. **Verify.** Check mobile and desktop layouts, keyboard focus, contrast, accessible names, image alt text, broken links, and both language routes. Run `npm run build` when possible; disclose any unverified items.
+| Element | Desktop / wide | Mobile / narrow |
+| --- | --- | --- |
+| Content width | `max-width: 1040px`; 24px side gutter | 16px side gutter |
+| Main content top padding | 34px | 23px |
+| Main heading | 25px | 22px |
+| Project presentation | Two columns: visual `1.15fr`, info `1fr` | Single column: visual, then info |
+| Project visual | 16:10 aspect ratio; do not stretch actual screenshots | 16:10 unless the real artwork requires a different ratio |
+| Project info | Category, title, summary, actions | Same content order; primary action full width |
+| Responsive switch | `max-width: 720px` | At or below 720px |
+| Navigation | Visible text links | Visible text links, wrapping as necessary; no hamburger for three links |
 
-For small, explicit changes (for example a favicon or a typo), implement directly without inventing a redesign exercise.
+**No fixed-height viewport composition.** Natural vertical scrolling is allowed on phones and detail pages. Reduce blank space instead of shrinking text or clipping content to fit one screen.
 
-## UI quality checklist
+The homepage and project-list page must not add a generic slogan above the actual work. Project details may be longer when they contain real descriptions, screenshots, controls, or instructions.
 
-- A first-time visitor can tell what the site offers and where to click.
-- Project title, category, short description, and available actions are easy to scan.
-- One project does not look like an empty marketplace; filters and empty states are purposeful.
-- Layout works at narrow mobile widths without horizontal scrolling.
-- Focus indicators are visible, semantics are correct, and navigation works without a mouse.
-- Japanese and English layouts both accommodate text length.
-- SEO/OGP metadata and actual project links remain accurate.
-- No fabricated screenshots, testimonials, metrics, demos, or project entries.
+## 3. Typography, color, and spacing baseline
 
-## Repository pointers
+Use `src/styles/global.css` as the source of truth. The following are the **existing values to preserve for consistency until a visual direction is explicitly selected**, not a new aesthetic proposal:
 
-- `src/layouts/Base.astro`: shared document structure and navigation.
-- `src/components/`: project list and detail presentation.
-- `src/styles/global.css`: global styling.
-- `src/data/content.ts`: project data and Japanese/English copy.
-- `src/pages/`: localized routes.
+- Font stack: system UI with Japanese fallbacks; base line-height `1.65`.
+- Main text `#252525`; page background `#fafaf8`; muted text approximately `#555–#666`; separators `#d7d7d3`.
+- Focus outline: `3px solid #1764c0`, offset `3px`; never remove it.
+- Project title: `clamp(24px, 3vw, 35px)` on desktop, `25px` on mobile.
+- Project summary: `16px` desktop, `15px` mobile; keep a readable line length.
+- Main column gap: `clamp(24px, 4vw, 54px)`; mobile project gap `19px`.
+- Primary action minimum height `46px`; other interactive targets should aim for at least `44×44px` with adequate separation.
+
+**Do not introduce a new palette, display font, rounded-card system, shadows, gradients, decorative badges, or animation as filler.** If a distinctive visual system is needed, design and evaluate alternatives using real content first; only then update these baseline values.
+
+## 4. Component behavior
+
+### Header
+- Brand links to the locale's home page.
+- Show Projects, About, and language switch without hiding primary navigation.
+- The language switch should point to the equivalent route, not reset visitors to an unrelated page.
+- On mobile, wrapping is preferable to tiny tap targets or horizontal overflow.
+
+### Project listing (`src/components/ProjectList.astro`)
+- One entry per real project, not a second decorative hero plus the same item below.
+- The artwork is a link to the detail page. Title and explicit detail action also link there.
+- Do not present typographic placeholder artwork as a real game screenshot.
+- Keep the source-code link visually secondary. If a live demo becomes available, decide its priority based on the visitor's goal.
+- Never show controls that cannot meaningfully change the current result set.
+
+### Project details (`src/components/ProjectDetail.astro`)
+- Back link, title, concise description, project visual, available actions, then substantive details.
+- Unavailable demos must not render as clickable actions.
+- Avoid repeating identical descriptions or large decorative gaps.
+- If real screenshots are added, use correct aspect ratio and descriptive alt text.
+
+### Shared structure
+- Keep Japanese (`/`) and English (`/en/`) equivalent in navigation and content hierarchy.
+- Preserve real links, canonical URLs, hreflang, metadata, and favicon.
+- Use semantic landmarks and visible keyboard focus.
+
+## 5. Non-negotiable anti-patterns
+
+| Reject | Replace with |
+| --- | --- |
+| Generic full-screen hero with a vague slogan | Direct heading and actual project entry |
+| Repeated featured card and identical project list | Single canonical presentation of each project |
+| Empty filters, sorting, fake counts, popularity | No control until it solves a real discovery problem |
+| Rounded cards/gradients/pills used just to look modern | Borders, spacing, typography, and actual project imagery |
+| Desktop layout squeezed onto a phone | Reflow to a single column and reorder by visitor priority |
+| Artificial viewport-height fit | Readable content and natural scrolling |
+| Invented demo/screenshot/project data | Honest placeholder or explicit unavailable state |
+
+## 6. Verification and acceptance
+
+For a UI change, check **at minimum**:
+- Viewports: `320×568`, `375×812`, `768×1024`, and `1440×900` (CSS pixels).
+- Routes: `/`, `/en/`, `/projects/`, `/en/projects/`, and both project detail routes when affected.
+- At 320px: no horizontal page overflow, clipped title, overlapping navigation, or inaccessible action.
+- Keyboard: all links/actions reachable in logical order; focus visibly indicated.
+- Touch: main action and navigation links remain usable without hover.
+- Content: no fabricated screenshots or live links; JP/EN content hierarchy matches.
+- Density: no redundant hero, duplicate listing, or large empty section without purpose.
+- Build: run `npm run build` when possible, as required by `AGENTS.md`.
+
+**Do not claim visual verification without screenshots/browser inspection.** If a viewport, device, or build cannot be tested, report that limitation rather than declaring success.
+
+## 7. Where to edit
+
+- `src/layouts/Base.astro`: header, footer, metadata, locale navigation.
+- `src/components/ProjectList.astro`: catalog entries and actions.
+- `src/components/ProjectDetail.astro`: detail page content and actions.
+- `src/styles/global.css`: visual values and responsive rules.
+- `src/data/content.ts`: factual project information and localized copy.
+
+For a **major redesign**, first show concrete alternatives grounded in the actual content and get the direction selected. For a **small requested change**, implement directly and verify the affected behavior.
