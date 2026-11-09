@@ -1,0 +1,6 @@
+---
+import Base from '../../layouts/Base.astro';
+import ProjectList from '../../components/ProjectList.astro';
+import {copy} from '../../data/content';
+---
+<Base lang="en"><div class="wrap page"><p class="eyebrow">INDEPENDENT PROJECTS</p><h1>Things we've made.</h1><p class="lead">{copy.en.intro}</p><section class="section"><h2>Projects</h2><ProjectList lang="en"/></section></div></Base>
