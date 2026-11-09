@@ -8,6 +8,14 @@ This repository is the Astro + TypeScript website for tanzyyy-dev.
 
 For non-UI changes, use the relevant repository conventions; consult the design skill if the change affects the rendered experience.
 
+## Git commits and deployment safety
+
+- **Commit all files belonging to one logical task in a single commit.** Prepare and review the complete change set before pushing; do not create or push one commit per file.
+- **Push once per completed task**, after validation where possible. Avoid rapid consecutive pushes to `main`: each push triggers the GitHub Pages deployment workflow, and overlapping deployments can fail with HTTP 400 (`in progress deployment`).
+- If additional fixes are needed, verify the previous deployment has completed before pushing again when practical.
+- If the available GitHub tooling only supports one-file-per-commit writes, **do not silently use that approach**. Use a multi-file commit mechanism, or explain the limitation and request approval before proceeding.
+- Do not change deployment configuration merely to compensate for unnecessary fragmented commits.
+
 ## Working rules
 
 - Keep Japanese as the default site at `/` and English at `/en/`. Maintain parity when editing user-facing content or navigation.
